@@ -1,1 +1,1 @@
-new: python app\main.py
+new: python app/main.py
