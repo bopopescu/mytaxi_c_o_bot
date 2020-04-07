@@ -1,0 +1,4 @@
+pyTelegramBotAPI
+virtualenv
+mysql-connector
+requests
