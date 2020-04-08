@@ -1,5 +1,5 @@
-import telebot 
-from telebot import types 
+import telebot
+from telebot import types
 from app.db import *
 
 TOKEN = '1018909192:AAFCCirDJ72yQyTijRNksDxZ0LzeWvSKdik'
@@ -28,15 +28,12 @@ def task_2(message):
     return
 
 
-
-
 @bot.message_handler(content_types=['text'])
 def recommendation(message):
     chat_id = message.chat.id
     msg = 'Error message!\nIt should be in forms given below:\nFOR TASK1: YYYY-MM-DD\nFOR TASK2: YYYY-MM'
     bot.send_message(chat_id, msg)
     return
-
 
 
 if __name__ == "__main__":
