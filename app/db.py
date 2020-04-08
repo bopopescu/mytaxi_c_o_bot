@@ -2,22 +2,17 @@ import mysql.connector
 from mysql.connector import errorcode
 import datetime
 
-config = {
-  'user': 'jamshid_dc',
-  'password': 'ce90698e0e9ddd0d120edf72f43cb878',
-  'host': 'apitest.mytaxi.uz',
-  'database': 'test',
-  'raise_on_warnings': True
-}
+# config = {
+#   'user': 'jamshid_dc',
+#   'password': 'ce90698e0e9ddd0d120edf72f43cb878',
+#   'host': 'apitest.mytaxi.uz',
+#   'database': 'test',
+#   'raise_on_warnings': True
+# }
 
 # conn = mysql.connector.connect(**config)
 
-# mydb = mysql.connector.connect(
-#   host="apitest.mytaxi.uz",
-#   user="jamshid_dc",
-#   passwd="ce90698e0e9ddd0d120edf72f43cb878",
-#   database="test"
-# )
+
 
 
 def get_day_cancel(date):
@@ -31,7 +26,13 @@ def get_day_cancel(date):
               ORDER BY 3 DESC, 1"""
     
     try:
-        conn = mysql.connector.connect(**config)
+        conn = mysql.connector.connect(
+            host="apitest.mytaxi.uz",
+            user="jamshid_dc",
+            passwd="ce90698e0e9ddd0d120edf72f43cb878",
+            database="test"
+            )
+
         conn.execute(sql)
         result = conn.fetchall()
         if len(result) == 0:
@@ -108,7 +109,13 @@ def month_stat(date_m):
             ORDER BY 2 DESC;"""
     
     try:
-        conn = mysql.connector.connect(**config)
+        conn = mysql.connector.connect(
+            host="apitest.mytaxi.uz",
+            user="jamshid_dc",
+            passwd="ce90698e0e9ddd0d120edf72f43cb878",
+            database="test"
+            )
+            
         conn.execute(sql)
         result = conn.fetchall()
         
