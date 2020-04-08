@@ -38,7 +38,7 @@ def get_day_cancel(date):
         
         msg = f'{date}\n   DAY   | CANCELED | REGION\n'
         msg += mesg
-    mysql.close()
+    mydb.close()
     return msg
 
 # date = '2019-11-29'
@@ -104,7 +104,7 @@ def month_stat(date_m):
         
         msg = f'{date}\nCLIENT_ID|S_O_F |C_O_F | AVG_COST |AVG_DR_DIS|AVG_DR_MIN\n'
         msg += mesg
-    mysql.close()
+    mydb.close()
     return msg
 
 # date_m = '2019-01'
