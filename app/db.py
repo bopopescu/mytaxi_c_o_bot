@@ -2,15 +2,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import datetime
 
-# config = {
-#   'user': 'jamshid_dc',
-#   'password': 'ce90698e0e9ddd0d120edf72f43cb878',
-#   'host': 'apitest.mytaxi.uz',
-#   'database': 'test',
-#   'raise_on_warnings': True
-# }
 
-# conn = mysql.connector.connect(**config)
 conn = mysql.connector.connect(
     host="apitest.mytaxi.uz",
     user="jamshid_dc",
@@ -18,7 +10,7 @@ conn = mysql.connector.connect(
     database="test"
 )
 
-# mycur = conn.cursor()
+mycur = conn.cursor()
 
 
 def get_day_cancel(date):
@@ -53,11 +45,9 @@ def get_day_cancel(date):
             msg = "Database does not exist"
         else:
             msg = err
-    else:
-        conn.commit()
-    finally:
-        mycur.close()
-
+    
+    conn.commit()
+    mycur.close()
     return msg
 
 # date = '2019-11-29'
@@ -131,9 +121,7 @@ def month_stat(date_m):
             msg = "Database does not exist"
         else:
             msg = err
-    else:
-        conn.commit()
-    finally:
-        mycur.close()
-
+    
+    conn.commit()
+    mycur.close()
     return msg
