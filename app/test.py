@@ -10,7 +10,7 @@ conn = mysql.connector.connect(
 
 mycur = conn.cursor()
 
-sql = """SELECT *
+sql = """SELECT client_id, date, from_adres
            FROM max_taxi_incoming_orders
           WHERE status = '8' 
             AND date BETWEEN '2017-05-02' AND '2018-05-02'
@@ -21,4 +21,15 @@ sql = """SELECT *
 mycur.execute(sql)
 res = mycur.fetchall()
 
+
+arr = []
+
+arr.extend(res[0])
+
 print(res)
+
+
+print("test")
+
+
+print(arr)
