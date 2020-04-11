@@ -53,9 +53,9 @@ def get_day_cancel(date):
         else:
             msg = err
     else:
-        conn.commit()
+        mycur.commit()
     finally:
-        conn.close()
+        mycur.close()
 
     return msg
 
@@ -130,8 +130,8 @@ def month_stat(date_m):
         else:
             msg = err
     else:
-        conn.commit()
+        mycur.commit()
     finally:
-        conn.close()
+        mycur.close()
 
     return msg
