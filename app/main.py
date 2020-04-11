@@ -10,6 +10,15 @@ date_regex = r"^(20|21)[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
 date_m_regex = r"^(20|21)[0-9]{2}-(0[1-9]|1[0-2])$"
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    chat_id = message.chat.id
+    msg = 'Hello! Send me a date in order to get information about canceled orders\n'
+    msg +='It should be in forms given below:\nFOR TASK1: YYYY-MM-DD\nFOR TASK2: YYYY-MM'
+    bot.send_message(chat_id, msg)
+    return
+
+
 @bot.message_handler(regexp=date_regex)
 def task_1(message):
     chat_id = message.chat.id
