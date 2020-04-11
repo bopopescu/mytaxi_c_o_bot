@@ -18,6 +18,8 @@ conn = mysql.connector.connect(
     database="test"
 )
 
+mycur = conn.cursor()
+
 
 def get_day_cancel(date):
     sql = f"""SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(from_adres, ',',1), ' ',1)) REGION,
@@ -30,8 +32,8 @@ def get_day_cancel(date):
               ORDER BY 3 DESC, 1"""
 
     try:
-        conn.execute(sql)
-        result = conn.fetchall()
+        mycur.execute(sql)
+        result = mycur.fetchall()
         if len(result) == 0:
             msg = 'Check the date again, the result is empty'
         else:
@@ -107,8 +109,8 @@ def month_stat(date_m):
             ORDER BY 2 DESC;"""
 
     try:
-        conn.execute(sql)
-        result = conn.fetchall()
+        mycur.execute(sql)
+        result = mycur.fetchall()
 
         if len(result) == 0:
             msg = 'Check the date again, the result is empty'
