@@ -18,7 +18,7 @@ conn = mysql.connector.connect(
     database="test"
 )
 
-mycur = conn.cursor()
+# mycur = conn.cursor()
 
 
 def get_day_cancel(date):
@@ -32,6 +32,7 @@ def get_day_cancel(date):
               ORDER BY 3 DESC, 1"""
 
     try:
+        mycur = conn.cursor()
         mycur.execute(sql)
         result = mycur.fetchall()
         if len(result) == 0:
@@ -109,6 +110,7 @@ def month_stat(date_m):
             ORDER BY 2 DESC;"""
 
     try:
+        mycur = conn.cursor()
         mycur.execute(sql)
         result = mycur.fetchall()
 
