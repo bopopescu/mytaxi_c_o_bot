@@ -2,3 +2,4 @@ pyTelegramBotAPI
 virtualenv
 mysql-connector
 requests
+pandas
