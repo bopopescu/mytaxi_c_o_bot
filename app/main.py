@@ -3,7 +3,7 @@ from telebot import types
 from db import *
 from functions import *
 
-TOKEN = '1018909192:AAFCCirDJ72yQyTijRNksDxZ0LzeWvSKdik'
+TOKEN = '1018909192:AAEhwK02FYIJwGFQwM_Hz6XSErB04WooawQ'
 bot = telebot.TeleBot(TOKEN)
 
 
