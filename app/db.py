@@ -133,3 +133,42 @@ def month_stat(date_m):
     conn.commit()
     mycur.close()
     return msg
+
+
+
+def month_req(date_m):
+    conn = mysql.connector.connect(
+    host="apitest.mytaxi.uz",
+    user="jamshid_dc",
+    passwd="ce90698e0e9ddd0d120edf72f43cb878",
+    database="test"
+    )
+
+    mycur = conn.cursor()
+    date = f'{date_m}-01'
+    sql = f"""SELECT client_id,
+                     date TIME
+                FROM max_taxi_incoming_orders
+               WHERE status='8'
+                 AND client_id IS NOT NULL
+                 AND date BETWEEN '{date}' AND DATE_ADD('{date}', INTERVAL 1 MONTH)
+            GROUP BY 1,2
+            ORDER BY 1,2 DESC
+               LIMIT 100;"""
+
+    try:
+        mycur = conn.cursor()
+        mycur.execute(sql)
+        result = mycur.fetchall()
+        
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            raise "Something is wrong with your user name or password"
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            raise "Database does not exist"
+        else:
+            raise err
+    
+    conn.commit()
+    mycur.close()
+    return result
