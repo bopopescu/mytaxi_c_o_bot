@@ -34,6 +34,6 @@ def get_month_stat(date):
     df2['count']=1
     df3 = df2.groupby('day').count()
 
-    msg = f'date: {date}\n\n{df3}\n\noverall: {sum} canceled orders'
+    msg = f'date: {date}\n\n   {df3}\n\noverall: {sum} canceled orders'
 
     return msg
