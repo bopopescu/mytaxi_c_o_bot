@@ -3,16 +3,6 @@ from mysql.connector import errorcode
 import datetime
 
 
-conn = mysql.connector.connect(
-    host="apitest.mytaxi.uz",
-    user="jamshid_dc",
-    passwd="ce90698e0e9ddd0d120edf72f43cb878",
-    database="test"
-)
-
-mycur = conn.cursor()
-
-
 def get_day_cancel(date):
     sql = f"""SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(from_adres, ',',1), ' ',1)) REGION,
                      DATE_FORMAT(date,'%W') DAY,
@@ -24,6 +14,15 @@ def get_day_cancel(date):
               ORDER BY 3 DESC, 1"""
 
     try:
+        conn = mysql.connector.connect(
+            host="apitest.mytaxi.uz",
+            user="jamshid_dc",
+            passwd="ce90698e0e9ddd0d120edf72f43cb878",
+            database="test"
+        )
+
+        mycur = conn.cursor()
+
         mycur = conn.cursor()
         mycur.execute(sql)
         result = mycur.fetchall()
@@ -45,7 +44,7 @@ def get_day_cancel(date):
             msg = "Database does not exist"
         else:
             msg = err
-    
+
     conn.commit()
     mycur.close()
     return msg
@@ -100,6 +99,15 @@ def month_stat(date_m):
             ORDER BY 2 DESC;"""
 
     try:
+        conn = mysql.connector.connect(
+            host="apitest.mytaxi.uz",
+            user="jamshid_dc",
+            passwd="ce90698e0e9ddd0d120edf72f43cb878",
+            database="test"
+        )
+
+        mycur = conn.cursor()
+
         mycur = conn.cursor()
         mycur.execute(sql)
         result = mycur.fetchall()
@@ -121,7 +129,7 @@ def month_stat(date_m):
             msg = "Database does not exist"
         else:
             msg = err
-    
+
     conn.commit()
     mycur.close()
     return msg
