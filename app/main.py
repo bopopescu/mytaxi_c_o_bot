@@ -19,7 +19,7 @@ def start(message):
     msg +='TASK1: Canceled orders grouped by regions in one exact date\n'
     msg +='TASK2: Detailed statististics of requested month\n'
     msg +='TASK3: More precise count of canceled orderes grouped by month days of requested month\n' 
-    msg +='\nFOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2018-05-02\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2018-05 \nFOR TASK3: \'-YYYY-MM\' \ne.g.: -2018-05'
+    msg +='\nFOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2019-04-04\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2019-04 \nFOR TASK3: \'-YYYY-MM\' \ne.g.: -2019-04'
     bot.send_message(chat_id, msg)
     return
 
@@ -55,7 +55,7 @@ def task_3(message):
 @bot.message_handler(content_types=['text'])
 def recommendation(message):
     chat_id = message.chat.id
-    msg ='FOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2018-05-02\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2018-05 \nFOR TASK3: \'-YYYY-MM\' \ne.g.: -2018-05'
+    msg ='FOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2019-04-04\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2019-04 \nFOR TASK3: \'-YYYY-MM\' \ne.g.: -2019-04'
     bot.send_message(chat_id, msg)
     return
 
