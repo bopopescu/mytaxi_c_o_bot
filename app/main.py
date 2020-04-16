@@ -36,7 +36,7 @@ def task_1(message):
 @bot.message_handler(regexp=date_m2_regex)
 def task_2(message):
     chat_id = message.chat.id
-    date_m = message.text[:1]
+    date_m = message.text[1:]
     msg = month_stat(date_m)
     bot.send_message(chat_id, msg)
     return
@@ -45,7 +45,7 @@ def task_2(message):
 @bot.message_handler(regexp=date_m3_regex)
 def task_3(message):
     chat_id = message.chat.id
-    date_m = message.text[:1]
+    date_m = message.text[1:]
     msg = get_month_stat(date_m)
     bot.send_message(chat_id, msg)
     return
