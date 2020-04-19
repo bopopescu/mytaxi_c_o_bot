@@ -136,18 +136,24 @@ def month_stat(date_m):
     return msg
 
 
-def month_req(date_m):
+def interval_req(date_interval):
 
-    date = f'{date_m}-01'
+    string = date_interval
+    str_1 = string[:10]
+    str_2 = string[11:]
+
+    date1 = datetime.strptime(str_1, "%Y/%m/%d")
+    date2 = datetime.strptime(str_2, "%Y/%m/%d")
+    
     sql = f"""SELECT client_id,
                      date TIME
                 FROM max_taxi_incoming_orders
                WHERE status='8'
                  AND client_id IS NOT NULL
-                 AND date BETWEEN '{date}' AND DATE_ADD('{date}', INTERVAL 1 MONTH)
+                 AND date BETWEEN '{date1}' AND '{date2}'
             GROUP BY 1,2
-            ORDER BY 1,2 DESC
-               LIMIT 100;"""
+            ORDER BY 1,2 DESC;"""
+
 
     try:
         conn = mysql.connector.connect(
