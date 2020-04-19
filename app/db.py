@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 import datetime
-from secret_configs import *
+from secret_config import *
 
 
 def get_day_cancel(date):

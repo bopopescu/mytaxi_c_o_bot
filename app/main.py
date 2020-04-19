@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from secret_configs import BOTTOKEN
+from secret_config import BOTTOKEN
 
 from db import *
 from functions import *
