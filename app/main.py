@@ -22,7 +22,7 @@ def start(message):
     msg +='TASK1: Canceled orders grouped by regions in one exact date\n'
     msg +='TASK2: Detailed statististics of requested month\n'
     msg +='TASK3: More precise count of canceled orderes grouped by client_id of requested period\n' 
-    msg +='\nFOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2019-04-04\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2019-04 \nFOR TASK3: \'YYYY/MM/DD-YYYY/MM/DD\' \ne.g.: 2019/04/04-2019/04/30'
+    msg +='\nFOR TASK1: \'YYYY-MM-DD\' \ne.g.: 2019-04-04\nFOR TASK2: \'+YYYY-MM\' \ne.g.: +2019-04 \nFOR TASK3: \'YYYY/MM/DD-YYYY/MM/DD\' \ne.g.: 2019/04/04-2019/06/30'
     bot.send_message(chat_id, msg)
     return
 

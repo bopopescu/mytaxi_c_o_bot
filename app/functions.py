@@ -33,6 +33,6 @@ def get_interval_stat(date_interval):
     df3 = df2.groupby('client_id').count()
     df3 = df3.sort_values(by=['canceled'],ascending=False)
 
-    msg = f'date interval: {date_interval}\n\n\t\t\t{df3}\n\noverall: {sum} canceled orders'
+    msg = f'date interval: {date_interval}\n\n\t{df3}\n\noverall: {sum} canceled orders'
 
     return msg
