@@ -1,9 +1,12 @@
 import telebot
 from telebot import types
+from secret_configs import BOTTOKEN
+
 from db import *
 from functions import *
 
-TOKEN = '1018909192:AAEhwK02FYIJwGFQwM_Hz6XSErB04WooawQ'
+
+TOKEN = BOTTOKEN
 bot = telebot.TeleBot(TOKEN)
 
 

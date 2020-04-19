@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 import datetime
+from secret_configs import *
 
 
 def get_day_cancel(date):
@@ -15,10 +16,10 @@ def get_day_cancel(date):
 
     try:
         conn = mysql.connector.connect(
-            host="apitest.mytaxi.uz",
-            user="jamshid_dc",
-            passwd="ce90698e0e9ddd0d120edf72f43cb878",
-            database="test"
+            host=HOST,
+            user=USER,
+            passwd=PWD,
+            database=DB
         )
 
         mycur = conn.cursor()
@@ -100,10 +101,10 @@ def month_stat(date_m):
 
     try:
         conn = mysql.connector.connect(
-            host="apitest.mytaxi.uz",
-            user="jamshid_dc",
-            passwd="ce90698e0e9ddd0d120edf72f43cb878",
-            database="test"
+            host=HOST,
+            user=USER,
+            passwd=PWD,
+            database=DB
         )
 
         mycur = conn.cursor()
@@ -135,16 +136,8 @@ def month_stat(date_m):
     return msg
 
 
-
 def month_req(date_m):
-    conn = mysql.connector.connect(
-    host="apitest.mytaxi.uz",
-    user="jamshid_dc",
-    passwd="ce90698e0e9ddd0d120edf72f43cb878",
-    database="test"
-    )
 
-    mycur = conn.cursor()
     date = f'{date_m}-01'
     sql = f"""SELECT client_id,
                      date TIME
@@ -157,10 +150,17 @@ def month_req(date_m):
                LIMIT 100;"""
 
     try:
+        conn = mysql.connector.connect(
+            host=HOST,
+            user=USER,
+            passwd=PWD,
+            database=DB
+        )
+
         mycur = conn.cursor()
         mycur.execute(sql)
         result = mycur.fetchall()
-        
+
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             raise "Something is wrong with your user name or password"
@@ -168,7 +168,7 @@ def month_req(date_m):
             raise "Database does not exist"
         else:
             raise err
-    
+
     conn.commit()
     mycur.close()
     return result
