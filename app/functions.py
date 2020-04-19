@@ -9,7 +9,7 @@ def get_month_stat(date):
     
     res = month_req(date)
     l = len(res)
-    list_day=[]
+    clients_list=[]
     sum=0
 
     for x in range(l):
@@ -23,16 +23,16 @@ def get_month_stat(date):
                 delta = timedelta(minutes = 5)
                 if diff <= delta:
                     sum=sum+1
-                    list_day.append(res[x][1].day)
+                    clients_list.append(res[x][0])
     #                 print(f'day {res[x][1].day}\t\t\tn{x}:{sum}')
 
-    ls = list_day
+    ls = clients_list
     df = pd.DataFrame(ls)
     df1 = df.sort_values(by=0,ignore_index=True)
     df2=pd.DataFrame()
-    df2['day']=df1[0]
+    df2['client_id']=df1[0]
     df2['count']=1
-    df3 = df2.groupby('day').count()
+    df3 = df2.groupby('client_id').count()
 
     msg = f'date: {date}\n\n   {df3}\n\noverall: {sum} canceled orders'
 
